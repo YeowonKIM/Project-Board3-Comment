@@ -19,6 +19,7 @@ public class BoardResponseDto {
     private LocalDateTime createAt;
     private LocalDateTime modifiedAt;
     private List<CommentResponseDto> commentList = new ArrayList<>();
+    private int countLikes;
 
 
     @Builder
@@ -29,6 +30,7 @@ public class BoardResponseDto {
         this.username = board.getUser().getUsername();
         this.createAt = board.getCreateAt();
         this.modifiedAt = board.getModifiedAt();
+        countLikes = board.getLikesList().size();
     }
 
     public BoardResponseDto(Board board, List<CommentResponseDto> commentList) {
@@ -39,5 +41,6 @@ public class BoardResponseDto {
         this.createAt = board.getCreateAt();
         this.modifiedAt = board.getModifiedAt();
         this.commentList = commentList;
+        countLikes = board.getLikesList().size();
     }
 }

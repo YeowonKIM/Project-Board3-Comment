@@ -28,8 +28,12 @@ public class Board extends TimeStamped {
     private User user;
 
     @OneToMany(mappedBy = "board", cascade = CascadeType.REMOVE)
-    //cascade removㄷ : 게시글을 지우면 댓글들도 같이 삭제됨.
+    //cascade remove : 게시글을 지우면 댓글들도 같이 삭제됨.
     private List<Comment> commentList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "board", cascade = CascadeType.REMOVE)
+    private List<Likes> likesList = new ArrayList<>();
+
     @Builder
     public Board(BoardRequestDto boardRequestDto, User user) {
         this.title = boardRequestDto.getTitle();
